@@ -5,11 +5,8 @@ const { queryContent } = useContent();
 
 const { data } = await useAsyncData("data", () => {
   let query = queryContent("blog", {
-    latest: true,
     published: true,
   });
-  // This work because the type is BlogCollectionItem now
-  query = query.order("updatedAt", "DESC");
   return query.first();
 });
 console.log("data", data.value);
